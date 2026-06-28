@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Coffee Sales Dashboard | Excel Portfolio Project</title>
+  <meta name="description" content="Interactive Excel portfolio project converted into a web analytics dashboard with dynamic filters and visual sales insights." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="background-blur background-blur-a"></div>
+  <div class="background-blur background-blur-b"></div>
+
+  <header class="hero shell">
+    <nav class="nav">
+      <div class="brand"><span class="brand-mark">☕</span><span>Coffee Analytics</span></div>
+      <div class="nav-actions">
+        <a class="ghost-link" href="data/coffeeOrdersData.xlsx" download>Download Excel</a>
+        <a class="ghost-link" href="#data-table">View data</a>
+      </div>
+    </nav>
+    <section class="hero-grid">
+      <div>
+        <h1>Interactive Coffee Sales Dashboard</h1>
+        <div class="hero-actions">
+          <button id="scrollToDashboard" class="primary-btn">Explore dashboard</button>
+          <button id="resetFiltersTop" class="secondary-btn">Reset filters</button>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="hero-card-top">
+          <span>Portfolio summary</span><strong id="heroTotalSales">$0</strong>
+        </div>
+        <div class="mini-metrics">
+          <div><span>Rows</span><strong id="heroRows">0</strong></div>
+          <div><span>Years</span><strong id="heroYears">0</strong></div>
+          <div><span>Countries</span><strong id="heroCountries">0</strong></div>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <main id="dashboard" class="shell dashboard-shell">
+    <section class="filter-panel card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Interactive controls</p>
+        </div>
+        <button id="resetFilters" class="small-btn">Clear all</button>
+      </div>
+      <div class="filters-grid">
+        <label>Year<select id="yearFilter"></select></label>
+        <label>Country<select id="countryFilter"></select></label>
+        <label>Coffee type<select id="coffeeFilter"></select></label>
+        <label>Roast type<select id="roastFilter"></select></label>
+        <label>Size<select id="sizeFilter"></select></label>
+        <label>Loyalty card<select id="loyaltyFilter"></select></label>
+      </div>
+    </section>
+
+    <section class="kpi-grid" aria-label="Key performance indicators">
+      <article class="kpi card"><span>Total sales</span><strong id="kpiSales">$0</strong><small id="kpiSalesNote">Filtered revenue</small></article>
+      <article class="kpi card"><span>Total profit</span><strong id="kpiProfit">$0</strong><small>Estimated from product profit</small></article>
+      <article class="kpi card"><span>Orders</span><strong id="kpiOrders">0</strong><small>Order lines after filters</small></article>
+      <article class="kpi card"><span>Units sold</span><strong id="kpiUnits">0</strong><small>Total quantity</small></article>
+      <article class="kpi card"><span>Average order line</span><strong id="kpiAov">$0</strong><small>Sales per order line</small></article>
+      <article class="kpi card"><span>Top country</span><strong id="kpiCountry">—</strong><small id="kpiCountryNote">Highest sales</small></article>
+    </section>
+
+    <section class="chart-grid">
+      <article class="chart-card card large">
+        <div class="chart-title">
+          <div>
+            <h3>Sales over time</h3>
+            <p>Monthly sales trend by coffee type.</p>
+          </div>
+        </div>
+        <canvas id="salesTrendChart" height="150"></canvas>
+      </article>
+    
+      <article class="chart-card card">
+        <div class="chart-title">
+          <div>
+            <h3>Top 5 customers</h3>
+            <p>Highest revenue customers.</p>
+          </div>
+        </div>
+        <canvas id="customerChart" height="220"></canvas>
+      </article>
+    
+      <article class="chart-card card">
+        <div class="chart-title">
+          <div>
+            <h3>Sales by country</h3>
+            <p>Revenue comparison by market.</p>
+          </div>
+        </div>
+        <canvas id="countryChart" height="220"></canvas>
+      </article>
+    </section>
+
+    <section class="insights-grid">
+      <article class="card insight-card">
+        <p class="eyebrow">Project skills shown</p>
+        <h2>What this project demonstrates</h2>
+        <ul>
+          <li>Data cleaning and joining across orders, customers, and products table</li>
+          <li>Excel dashboard logic converted into a web analytics experience.</li>
+          <li>Interactive filtering, KPI tracking, visual storytelling, and table exploration.</li>
+          <li>Business-oriented summary metrics for better review.</li>
+        </ul>
+      </article>
+      <article class="card insight-card">
+        <p class="eyebrow">Dataset coverage</p>
+        <h2>Workbook fields used</h2>
+        <div class="tag-cloud" id="fieldTags"></div>
+      </article>
+    </section>
+
+    <section id="data-table" class="card table-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Data explorer</p>
+          <h2>Filtered order data</h2>
+          <p id="tableSummary">Showing filtered rows.</p>
+        </div>
+        <button id="downloadCsv" class="small-btn">Download filtered CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="orderDate">Date</th>
+              <th data-sort="orderId">Order ID</th>
+              <th data-sort="customerName">Customer</th>
+              <th data-sort="country">Country</th>
+              <th data-sort="coffeeTypeName">Coffee</th>
+              <th data-sort="roastTypeName">Roast</th>
+              <th data-sort="sizeKg">Size</th>
+              <th data-sort="quantity">Qty</th>
+              <th data-sort="sales">Sales</th>
+              <th data-sort="profit">Profit</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <p>@2026 By Zarana</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <script src="data/coffeeData.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
