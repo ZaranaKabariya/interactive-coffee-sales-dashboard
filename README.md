@@ -5,7 +5,7 @@ An interactive coffee sales analytics dashboard created from an Excel portfolio 
 This project demonstrates how raw order data can be cleaned, enriched, analyzed, visualized, and presented in a recruiter-friendly portfolio format.
 
 ## Live Demo
-Live website link : coffee-sale-dashboard.netlify.app
+Live website link : [coffee-sale-dashboard.netlify.app](https://coffee-sale-dashboard.netlify.app/)
 
 ## Project Preview
 
