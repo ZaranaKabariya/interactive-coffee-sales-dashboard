@@ -15,7 +15,7 @@ Live website link : coffee-sale-dashboard.netlify.app
 
 ### Web Dashboard
 
-![Web Dashboard](screenshot/Web_Dashboard.png)
+![Web Dashboard](Screenshot/Web_Dashboard.png)
 
 ## Project Objective
 
@@ -211,40 +211,12 @@ Some business questions answered by this dashboard:
 * Which coffee types performed best?
 * How do product size and roast type affect sales?
 
-## Skills Demonstrated
-
-This project demonstrates practical skills in:
-
-* Excel data cleaning
-* Lookup formulas
-* Conditional formulas
-* Data formatting
-* Duplicate checking
-* PivotTable analysis
-* PivotChart dashboarding
-* Business intelligence reporting
-* Web dashboard development
-* JavaScript data filtering
-* Chart.js visualization
-* Responsive portfolio design
-
 ## How to Run This Project Locally
 
 1. Download or clone this repository.
 2. Open the project folder.
 3. Open `index.html` in a browser.
 4. Use the dashboard filters to explore the data.
-
-## Future Improvements
-
-Possible future improvements include:
-
-* Adding more advanced business KPIs
-* Adding profit margin analysis
-* Adding customer segmentation
-* Adding monthly growth percentage
-* Adding dark/light mode
-* Connecting the dashboard to a live database or API
 
 ## Project Type
 
